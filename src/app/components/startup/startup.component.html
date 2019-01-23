@@ -1,0 +1,79 @@
+<h3>Liste des startups</h3>
+
+<button (click)="formStartup()" type="button" class="btn btn-info">{{ actionNameFormStartup }}</button>
+<form *ngIf="actionFormStartup"  [formGroup]="startupForm">
+  <div class="form-group">
+    <label>Nom</label>
+    <input class="form-control" formControlName="nom">
+    <div class="error" *ngIf="startupNomCtrl.touched">
+      <div *ngIf="startupNomCtrl.hasError('required')">Nom is required</div>
+      <div *ngIf="startupNomCtrl.hasError('maxlength')">Nom should be 20 characters max</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Secteur activité</label>
+    <input class="form-control" formControlName="secteurActivite">
+    <div class="error" *ngIf="startupSecteurActiviteCtrl.touched">
+      <div *ngIf="startupSecteurActiviteCtrl.hasError('required')">Secteur activité is required</div>
+      <div *ngIf="startupSecteurActiviteCtrl.hasError('maxlength')">Secteur activité should be 10 characters max</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nom représentant légal</label>
+    <input class="form-control" formControlName="nomRepresentant">
+    <div class="error" *ngIf="startupNomRepresentantCtrl.touched">
+      <div *ngIf="startupNomRepresentantCtrl.hasError('required')">Nom représentant légal is required</div>
+      <div *ngIf="startupNomRepresentantCtrl.hasError('maxlength')">Nom représentant légal should be 15 characters max</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Nombre de co-fondateurs</label>
+    <input class="form-control" type="number" formControlName="nbrCoFondateurs">
+    <div class="error" *ngIf="startupNbrCoFondateursCtrl.touched">
+      <div *ngIf="startupNbrCoFondateursCtrl.hasError('required')">Nombre de co-fondateurs is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" formControlName="description" rows="3"></textarea>
+    <div class="error" *ngIf="startupDescriptionCtrl.touched">
+      <div *ngIf="startupDescriptionCtrl.hasError('required')">Description is required</div>
+      <div *ngIf="startupDescriptionCtrl.hasError('maxlength')">Description should be 250 characters max</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Adresse</label>
+    <input class="form-control" formControlName="adresse">
+    <div class="error" *ngIf="startupAdresseCtrl.touched">
+      <div *ngIf="startupAdresseCtrl.hasError('maxlength')">Description should be 25 characters max</div>
+    </div>
+  </div>
+  <button *ngIf="!modifEnCours" (click)="add()" [disabled]="startupForm.invalid">Ajouter</button>
+  <button *ngIf="modifEnCours" (click)="update()" [disabled]="startupForm.invalid">Modifier</button>
+  <button type="reset">Reset</button>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NOM</th>
+      <th scope="col">REPRÉSENTANT</th>
+      <th scope="col">NOMBRE CO-FONDATEURS</th>
+      <th scope="col">DESCRIPTION</th>
+      <th scope="col">ADRESSE</th>
+      <th scope="col">ACTION</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let startup of startups" >
+      <td>{{ startup?.nom }}</td>
+      <td>{{ startup?.nomRepresentant }}</td>
+      <td>{{ startup?.nbrCoFondateurs | startupCoFondateur }}</td>
+      <td>{{ startup?.description }}</td>
+      <td>{{ startup?.adresse | isAdresse }}</td>
+      <td>
+        <button (click)="edit(startup)" type="button" class="btn btn-primary">Modifier</button>
+        <button (click)="delete(startup)" type="button" class="btn btn-primary">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

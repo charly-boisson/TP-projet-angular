@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-// import { elevesStore, sallesStore } from '../store/store';
-// import { Eleve } from '../models/eleve.model';
-// import { Salle } from '../models/salle.model';
+import { ConsultantStore, StartupStore } from '../store/store';
+import { Consultant } from '../models/consultant.model';
+import { Startup } from '../models/startup.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root',  
 })
 export class InMemoryDataService implements InMemoryDbService {
 
   constructor() { }
 
   createDb() {
-    const eleves:Array<string> = [];
-    return {eleves};
+    const consultants:Array<Consultant> = ConsultantStore;
+    const startups:Array<Startup> = StartupStore;
+    return {consultants,startups};
   }
 
- //  genId<T extends string | string >(table: T[]): number {
- //   return table.length > 0 ? Math.max(...table.map(t => t.id)) + 1 : 11;
- // }
-
+  genId<T extends Consultant | Startup >(table: T[]): number {
+   return table.length > 0 ? Math.max(...table.map(t => t.id)) + 1 : 11;
+ }
 
 }

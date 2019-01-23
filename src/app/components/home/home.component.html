@@ -1,0 +1,37 @@
+<div class="text-center" style="margin-top: 60px">
+<h3 >Bienvenue !</h3>
+<div>
+Nihil morati post haec militares avidi saepe turbarum adorti sunt Montium primum,
+qui divertebat in proximo, levi corpore senem atque morbosum, et hirsutis resticulis
+cruribus eius innexis divaricaturn sine spiramento ullo ad usque praetorium traxere praefecti.
+</div>
+<div>
+Nihil morati post haec militares avidi saepe turbarum adorti sunt Montium primum,
+qui divertebat in proximo, levi corpore senem atque morbosum, et hirsutis resticulis
+cruribus eius innexis divaricaturn sine spiramento ullo ad usque praetorium traxere praefecti.
+</div>
+</div>
+<br /><br />
+<div nz-row [nzGutter]="8" >
+  <div *ngFor="let startup of startups | slice:0:3" >
+      <app-ns-card [title]="startup.nom" >
+      <div  class="content">
+        <div><b>Secteur Activite : </b>{{ startup.secteurActivite }}</div>
+      </div>
+      </app-ns-card>
+  </div>
+</div>
+<br />
+<div class="text-center"><a class="btn btn-primary" href="" routerLink="startups">Voir toutes les startups</a></div>
+<br /><br />
+<div nz-row [nzGutter]="8" >
+  <div *ngFor="let consultant of consultants | slice:0:3" >
+      <app-ns-card [title]="consultant.nom" >
+      <div  class="content">
+        <div><b>Description : </b>{{ consultant.description }}</div>
+      </div>
+      </app-ns-card>
+  </div>
+</div>
+<br />
+<div class="text-center"><a class="btn btn-primary" href="" routerLink="consultants">Voir tous les consultants</a></div>

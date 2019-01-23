@@ -1,9 +1,19 @@
-// import { Matiere } from '../models/matiere.model';
-//
-// export const elevesStore = [
-//   new Eleve(1,'Bob1','toto1',16,'toto@gmail.com','Filière 1','Description 1',1),
-//   new Eleve(2,'Bob2','toto2',17,'toto@gmail.com','Filière 2','Description 2',1),
-//   new Eleve(3,'Bob3','toto3',53,'toto@gmail.com','Filière 3','Description 3',1),
-//   new Eleve(4,'Bob4','toto4',19,'toto@gmail.com','Filière 4','Description 4',1),
-//   new Eleve(5,'Bob5','toto5',45,'toto@gmail.com','Filière 5','Description 5',1)
-// ]
+import { Consultant } from '../models/consultant.model';
+import { Startup } from '../models/startup.model';
+
+export const ConsultantStore = [
+  new Consultant(1,'NomConsultant1','PrenomConsultant1','DescriptionConsultant1'),
+  new Consultant(2,'NomConsultant2','PrenomConsultant2','DescriptionConsultant2'),
+  new Consultant(3,'NomConsultant3','PrenomConsultant3','DescriptionConsultant3'),
+  new Consultant(4,'NomConsultant4','PrenomConsultant4','DescriptionConsultant4'),
+  new Consultant(5,'NomConsultant5','PrenomConsultant5','DescriptionConsultant5'),
+]
+
+
+export const StartupStore = [
+  new Startup(1,'NomStartup1','secteurActiviteStartup1','NomRepresentantStartup1',1,'DescriptionStartup1',5),
+  new Startup(2,'NomStartup2','secteurActiviteStartup2','NomRepresentantStartup2',2,'DescriptionStartup2',4,'AdresseStartup2'),
+  new Startup(3,'NomStartup3','secteurActiviteStartup3','NomRepresentantStartup3',3,'DescriptionStartup3',3),
+  new Startup(4,'NomStartup4','secteurActiviteStartup4','NomRepresentantStartup4',4,'DescriptionStartup4',2,'AdresseStartup4'),
+  new Startup(5,'NomStartup5','secteurActiviteStartup5','NomRepresentantStartup5',5,'DescriptionStartup5',1),
+]
